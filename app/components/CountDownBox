@@ -1,30 +1,33 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+
+let GLOBAL_TARGET_DATE = null; // persists across component remounts
 
 export default function CountdownBox() {
   const [timeLeft, setTimeLeft] = useState("");
-  const targetRef = useRef(null);
 
   useEffect(() => {
-    // Load or create target once
-    if (!targetRef.current) {
+    if (!GLOBAL_TARGET_DATE) {
       const saved = localStorage.getItem("spark31-countdown");
-
       if (saved) {
-        targetRef.current = new Date(saved);
+        GLOBAL_TARGET_DATE = new Date(saved);
       } else {
         const newDate = new Date();
         newDate.setFullYear(newDate.getFullYear() + 1);
         localStorage.setItem("spark31-countdown", newDate.toISOString());
-        targetRef.current = newDate;
+        GLOBAL_TARGET_DATE = newDate;
       }
     }
 
-    const targetDate = targetRef.current;
-
     const timer = setInterval(() => {
-      const now = Date.now();
-      const distance = targetDate - now;
+      const now = new Date();
+      const distance = GLOBAL_TARGET_DATE - now;
+
+      if (distance <= 0) {
+        setTimeLeft("0d : 0h : 0m : 0s");
+        clearInterval(timer);
+        return;
+      }
 
       const days = Math.floor(distance / (1000 * 60 * 60 * 24));
       const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -36,6 +39,20 @@ export default function CountdownBox() {
 
     return () => clearInterval(timer);
   }, []);
+
+  return (
+    <div className="countdown">
+      <div className="countdowntext">
+        <h2>Spark31</h2>
+        <h4>What's possibly waiting for us?</h4>
+      </div>
+      <div className="actualcountdown">
+        <h2>{timeLeft}</h2>
+      </div>
+    </div>
+  );
+}
+
 
     return (
       <>
