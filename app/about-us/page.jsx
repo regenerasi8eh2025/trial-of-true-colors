@@ -58,7 +58,7 @@ export default function AboutPage() {
       id: 5,
       name: "Nevin Pradityo Darminsyah SBM 25",
       role: "Train Div Technic",
-      insta: "https://www.instagram.com/",
+      insta: "https://www.instagram.com/nepinpd",
     },
     {
       id: 6,
@@ -76,7 +76,7 @@ export default function AboutPage() {
       id: 8,
       name: "Agnes Jeannes Handoko Khoe SF 25",
       role: "Train Div Technic",
-      insta: "https://www.instagram.com/",
+      insta: "https://www.instagram.com/agns.jnn",
     },
     {
       id: 9,
@@ -94,7 +94,6 @@ export default function AboutPage() {
       id: 11,
       name: "Anwar Arofa Ghani Sholahudin FITB 25",
       role: "Train Div Technic",
-      insta: "https://www.instagram.com/",
     },
     {
       id: 12,
