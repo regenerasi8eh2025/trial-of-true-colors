@@ -37,15 +37,15 @@ const allProgramsData = [
     description: "Program siaran/podcast yang membahas tarik-ulur dunia percintaan..."
   },
   {
-    title: "LOVE 4.0 U",
+    title: "LOVE4.0U",
     genre: "Romance",
-    thumbnail: "/LOVE 4.0 U.png",
+    thumbnail: "/LOVE4.0U.png",
     description: "Membahas soal berbagai macam masalah percintaan di era digital..."
   },
   {
     title: "TKP Gen Z Edition",
     genre: "Gen Z",
-    thumbnail: "/LOGO FIX.png",
+    thumbnail: "/LOGOFIX.png",
     description: "TKP versi anak muda kekinian..."
   },
   {
