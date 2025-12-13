@@ -238,40 +238,42 @@ const UpcomingEvents = () => {
 
   return (
     <section className="py-16 relative bg-transparent">
-      <div className="absolute inset-0 bg-gradient-to-r from-yellow-100 via-red-100 to-pink-100 opacity-30 animate-pulse"></div>
+      {/* REMOVED: The full-width background div */}
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <h2 className="text-4xl font-extrabold text-red-600 mb-8 text-center animate-bounce">Upcoming Siaran</h2>
 
-        {/* Calendar */}
-        <div className="grid grid-cols-7 gap-2">
-          {Array.from({ length: daysInMonth }, (_, i) => i + 1).map((day) => {
-            const hasEvent = eventsByDate[day];
-            const isSelected = selectedDay === day;
+        {/* Calendar with contained background */}
+        <div className="relative p-6 rounded-2xl bg-gradient-to-r from-yellow-100 via-red-100 to-pink-100 shadow-lg">
+          <div className="grid grid-cols-7 gap-2">
+            {Array.from({ length: daysInMonth }, (_, i) => i + 1).map((day) => {
+              const hasEvent = eventsByDate[day];
+              const isSelected = selectedDay === day;
 
-            return (
-              <button
-                key={day}
-                onClick={() => hasEvent && setSelectedDay(isSelected ? null : day)}
-                className={`
-                  h-16 rounded-lg flex flex-col items-center justify-center transition-all
-                  bg-gray-50 border hover:bg-gradient-to-br hover:from-yellow-100 hover:to-red-100
-                  ${hasEvent ? "border-2 border-yellow-400 hover:scale-110 shadow-lg" : ""}
-                  ${isSelected ? "ring-4 ring-red-600 scale-105" : ""}
-                `}
-              >
-                <div className="font-bold text-gray-900">{day}</div>
+              return (
+                <button
+                  key={day}
+                  onClick={() => hasEvent && setSelectedDay(isSelected ? null : day)}
+                  className={`
+                    h-16 rounded-lg flex flex-col items-center justify-center transition-all
+                    bg-white border hover:bg-gradient-to-br hover:from-yellow-100 hover:to-red-100
+                    ${hasEvent ? "border-2 border-yellow-400 hover:scale-110 shadow-lg" : ""}
+                    ${isSelected ? "ring-4 ring-red-600 scale-105" : ""}
+                  `}
+                >
+                  <div className="font-bold text-gray-900">{day}</div>
 
-                {hasEvent && (
-                  <div className="flex mt-1 gap-1">
-                    {eventsByDate[day].map((e, i) => (
-                      <span key={i} className={`w-4 h-4 rounded-full ${genreColors[e.genre]}`}></span>
-                    ))}
-                  </div>
-                )}
-              </button>
-            );
-          })}
+                  {hasEvent && (
+                    <div className="flex mt-1 gap-1">
+                      {eventsByDate[day].map((e, i) => (
+                        <span key={i} className={`w-4 h-4 rounded-full ${genreColors[e.genre]}`}></span>
+                      ))}
+                    </div>
+                  )}
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         {/* Event detail */}
