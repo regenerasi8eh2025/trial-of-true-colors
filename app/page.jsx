@@ -729,7 +729,7 @@ export default function Home() {
       {/* Sections */}
       <HeroSection />
       {/* <PodcastSection /> */}
-      <NewsSection />
+      {/* <NewsSection /> */}
       {/* <ProgramsSection /> */}
       {/* <TuneTrackerSection /> */}
       {/* <AnnouncersSection /> */}

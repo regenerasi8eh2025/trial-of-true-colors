@@ -129,7 +129,7 @@ export default function DashboardHome() {
       </div>
 
       {/* Grid Statistik */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <StatCard
           icon={<FiEdit size={24} />}
           title="Blog Posts"
@@ -138,10 +138,10 @@ export default function DashboardHome() {
           color="blue"
           href="/dashboard/blog"
         />
-      </div>
+      </div> */}
 
       {/* Aksi Cepat & Aktivitas Terbaru */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      {/* <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-1 bg-white p-6 rounded-xl shadow-sm border border-gray-200">
           <h2 className="font-heading font-bold text-xl text-gray-800 mb-4">
             Quick Actions
@@ -199,7 +199,7 @@ export default function DashboardHome() {
             </div>
           )}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

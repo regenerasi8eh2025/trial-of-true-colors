@@ -11,7 +11,7 @@ import { FiHome, FiEdit, FiCheckSquare, FiLogOut, FiSettings, FiBarChart2, FiChe
 
 const navItems = [
   { href: "/dashboard", label: "Home", icon: FiHome, roles: ["MUSIC", "DEVELOPER", "TECHNIC", "REPORTER", "CAKRU", "KRU"] },
-  { href: "/dashboard/blog", label: "Blog", icon: FiEdit, roles: ["DEVELOPER", "REPORTER", "KRU"] },
+  // { href: "/dashboard/blog", label: "Blog", icon: FiEdit, roles: ["DEVELOPER", "REPORTER", "KRU"] },
   { href: "/dashboard/player-config", label: "Player Config", icon: FiBarChart2, roles: ["DEVELOPER", "TECHNIC", "KRU"] },
   { href: "/dashboard/stream-config", label: "Stream Config", icon: FiSettings, roles: ["DEVELOPER", "TECHNIC", "KRU"] },
   { href: "/dashboard/users", label: "Users", icon: FiUsers, roles: ["DEVELOPER", "KRU"] },

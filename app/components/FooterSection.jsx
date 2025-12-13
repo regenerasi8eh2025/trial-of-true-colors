@@ -9,7 +9,7 @@ const footerLinks = {
   ],
   pages: [
     { title: "Home", href: "/" },
-    { title: "Blog", href: "/blog" },
+    // { title: "Blog", href: "/blog" },
   ],
 };
 

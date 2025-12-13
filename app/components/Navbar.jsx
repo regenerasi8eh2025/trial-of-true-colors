@@ -325,15 +325,29 @@ export default function Navbar() {
             >
               Podcast
             </a> */}
-            <a
+            {/* <a
               href="/blog"
               className="text-gray-900 hover:text-[#D83232] font-body font-normal text-base transition-colors"
             >
               Blog
+            </a> */}
+
+            <a
+              href="/programs"
+              className="text-gray-900 hover:text-[#D83232] font-body font-normal text-base transition-colors"
+            >
+              Programs
+            </a>
+
+            <a
+              href="/about-us"
+              className="text-gray-900 hover:text-[#D83232] font-body font-normal text-base transition-colors"
+            >
+              About Us
             </a>
 
             {/* Discover Dropdown */}
-            <div className="relative">
+            {/* <div className="relative">
               <button
                 onClick={() => handleDropdown("discover")}
                 className="flex items-center text-gray-900 hover:text-[#D83232] font-body font-normal text-base transition-colors"
@@ -360,7 +374,7 @@ export default function Navbar() {
                   {discoverLinks}
                 </div>
               )}
-            </div>
+            </div> */}
           </nav>
 
           {/* Custom Play Button (desktop/tablet) */}
@@ -473,15 +487,28 @@ export default function Navbar() {
             >
               Podcast
             </a> */}
-            <a
+            {/* <a
               href="/blog"
               className="px-3 py-3 text-gray-900 hover:text-[#D83232] hover:bg-gray-100 rounded-md font-medium text-base font-body transition-colors"
             >
               Blog
+            </a> */}
+            <a
+              href="/programs"
+              className="px-3 py-3 text-gray-900 hover:text-[#D83232] hover:bg-gray-100 rounded-md font-medium text-base font-body transition-colors"
+            >
+              Programs
+            </a>
+
+            <a
+              href="/about-us"
+              className="px-3 py-3 text-gray-900 hover:text-[#D83232] hover:bg-gray-100 rounded-md font-medium text-base font-body transition-colors"
+            >
+              About Us
             </a>
 
             {/* Discover Dropdown for Mobile */}
-            <div>
+            {/* <div>
               <button
                 onClick={() => handleDropdown("discover")}
                 className="w-full flex justify-between items-center px-3 py-3 text-gray-900 hover:text-[#D83232] hover:bg-gray-100 rounded-md font-medium text-base text-left font-body transition-colors"
@@ -506,7 +533,7 @@ export default function Navbar() {
               {openDropdown === "discover" && (
                 <div className="pl-4 mt-2 space-y-1">{discoverLinks}</div>
               )}
-            </div>
+            </div> */}
           </nav>
         </div>
       )}

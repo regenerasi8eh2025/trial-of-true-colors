@@ -6,7 +6,7 @@ import { hasRole, splitRoles } from '@/lib/roleUtils';
 import Image from 'next/image';
 
 // Base roles
-const BASE_ROLES = ["DEVELOPER", "TECHNIC", "REPORTER"];
+const BASE_ROLES = ["DEVELOPER", "TECHNIC"];
 
 // Helper to generate combinations of roles
 function generateRoleCombinations(baseRoles) {
