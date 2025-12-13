@@ -27,7 +27,7 @@ const allProgramsData = [
   {
     title: "TKP Eps. What… I'm the case?",
     genre: "Horror",
-    thumbnail: "/Video Promosi.png",
+    thumbnail: "/VideoPromosi.png",
     description: "‼Check on Yourself! Explore hal-hal kecil..."
   },
   {
@@ -51,7 +51,7 @@ const allProgramsData = [
   {
     title: "TKP Mystery Edition",
     genre: "Mystery",
-    thumbnail: "/Video Promosi.png",
+    thumbnail: "/VideoPromosi.png",
     description: "Kupas peristiwa penuh misteri..."
   }
 ];
