@@ -5,6 +5,7 @@ import ButtonPrimary from "@/app/components/ButtonPrimary";
 import FooterSection from "@/app/components/FooterSection";
 import React, { useEffect, useRef, useState } from "react";
 import Quiz from "@/app/components/quiz";
+import CountdownBox from "@/app/components/CountdownBox";
 import '@/app/globals.css'
 
 export default function AboutPage() {
@@ -13,87 +14,6 @@ export default function AboutPage() {
   const trackRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [modalMember, setModalMember] = useState(null);
-
-  // Countdown Box
-  function CountdownBox() {
-    const [timeLeft, setTimeLeft] = useState("");
-
-    useEffect(() => {
-      const targetDate = new Date();
-      targetDate.setFullYear(targetDate.getFullYear() + 1);
-
-      const timer = setInterval(() => {
-        const now = Date.now();
-        const distance = targetDate - now;
-
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor(
-          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
-        );
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        setTimeLeft(`${days}d : ${hours}h : ${minutes}m : ${seconds}s`);
-      }, 1000);
-
-      return () => clearInterval(timer);
-    }, []);
-
-    return (
-      <>
-        <div className="countdown">
-          <div className="countdowntext">
-            <h2>Spark31 </h2>
-            <h4>What's possibly waiting for us?</h4>
-          </div>
-
-          <div className="actualcountdown">
-            <h2>{timeLeft}</h2>
-          </div>
-        </div>
-
-        <style jsx>{`
-          .countdown {
-            font-family: Georgia, serif;
-            border-radius: 20px;
-            color: black;
-            margin: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-            padding: 20px;
-            height: 200px;
-            margin-bottom: 25px;
-            display: flex;
-            background-color: rgba(255, 153, 4, 0.1);
-          }
-
-          .countdowntext {
-            width: 30%;
-          }
-
-          .countdowntext h2 {
-            font-size: 40px;
-            padding: 15px;
-          }
-
-          .countdowntext h4 {
-            font-size: 16px;
-            padding: 15px;
-            padding-top: 5px;
-          }
-
-          .actualcountdown {
-            width: 60%;
-            margin: 20px;
-          }
-
-          .actualcountdown h2 {
-            font-size: 70px;
-            text-align: right;
-          }
-        `}</style>
-      </>
-    );
-  }
 
   // Config Music Rain
   const NOTE_COUNT = 18;
@@ -138,7 +58,7 @@ export default function AboutPage() {
       id: 5,
       name: "Nevin Pradityo Darminsyah SBM 25",
       role: "Train Div Technic",
-      insta: "https://www.instagram.com/",
+      insta: "https://www.instagram.com/nepinpd",
     },
     {
       id: 6,
@@ -156,7 +76,7 @@ export default function AboutPage() {
       id: 8,
       name: "Agnes Jeannes Handoko Khoe SF 25",
       role: "Train Div Technic",
-      insta: "https://www.instagram.com/",
+      insta: "https://www.instagram.com/agns.jnn",
     },
     {
       id: 9,
@@ -174,7 +94,6 @@ export default function AboutPage() {
       id: 11,
       name: "Anwar Arofa Ghani Sholahudin FITB 25",
       role: "Train Div Technic",
-      insta: "https://www.instagram.com/",
     },
     {
       id: 12,
@@ -597,7 +516,7 @@ export default function AboutPage() {
                 <div className="polaroid w-64 transform -rotate-3 mb-6 md:mb-0">
                   <div className="tape bg-yellow-200/60"></div>
                   <img
-                    src="app/about-us/img1.jpeg"
+                    src="/img1.jpeg"
                     alt="Trolls Trails~"
                   />
                   <div className="text-center mt-3 font-bold text-lg">
@@ -619,7 +538,7 @@ export default function AboutPage() {
                 <div className="polaroid w-64 transform rotate-2 mb-6 md:mb-0">
                   <div className="tape bg-pink-200/60"></div>
                   <img
-                    src="app/about-us/img4.jpeg"
+                    src="/img4.jpeg"
                     alt="Fun Moments"
                   />
                   <div className="text-center mt-3 font-bold text-lg">
@@ -641,7 +560,7 @@ export default function AboutPage() {
                 <div className="polaroid w-64 transform -rotate-1 mb-6 md:mb-0">
                   <div className="tape bg-green-200/60"></div>
                   <img
-                    src="app/about-us/img2.jpeg"
+                    src="/img2.jpeg"
                     alt="Happy Vibes"
                   />
                   <div className="text-center mt-3 font-bold text-lg">
