@@ -1,14 +1,17 @@
 "use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
+import Navbar from "../components/Navbar";
+import FooterSection from "../components/FooterSection";
+
+// Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
-import { useState } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import Navbar from "../components/Navbar";
-import FooterSection from "../components/FooterSection";
 
 /* ===================== FIGMA MOOD BOX DATA ===================== */
 const moodBoxData = [
@@ -21,148 +24,156 @@ const moodBoxData = [
 
 /* ===================== PROGRAM DATA ===================== */
 const allProgramsData = [
-  {
-    title: "TKP Eps. What… I'm the case?",
+    {
+    title: "LTM : Lentera Tengah Malam",
     genre: "Horror",
-    thumbnail: "/Video Promosi.png",
-    description: "‼️Check on Yourself! Explore hal-hal kecil..."
+    thumbnail: "/Ltm.png",
+    description: "Kupas tuntas tempat paling angker di ITB Jatinangor dalam episode perdana LTM yang dijamin bikin bulu kuduk berdiri! 🕯👻🔥",
   },
   {
-    title: "LDR “Love Dalam Realita”",
+  title: "OWL : Obrolan Waktu Larut",
+  genre: "Horror",
+  thumbnail: "/Owl.png",
+  description: "Siap bongkar tiga lagu berhantu yang bakal bikin Kampus Mania merinding! 👻🎶🔥",
+  },
+  {
+    title: "LDR : Love Dalam Realita ",
     genre: "Romance",
     thumbnail: "/Logo.png",
-    description: "Program siaran/podcast yang membahas tarik-ulur dunia percintaan ketika ekspektasi manis bertemu realita yang sering penuh plot twist. Lewat obrolan ringan, cerita listener, dan fenomena percintaan masa kini, LDR jadi ruang yang dekat dan relate untuk mengulik bagaimana rencana hati dan realita berjalan dengan ritmenya masing-masing. Dengan suasana hangat dan apa adanya, LDR hadir untuk menghibur sekaligus nemenin para pejuang cinta melihat realita dengan cara yang lebih ringan dan lucu."
+    description: "Siap nemenin Kampus Mania ngulik first date yang penuh ekspektasi tapi realitanya penuh plot twist! 😆💘",
   },
   {
-    title: "LOVE 4.0 U",
+    title: "LOVE 4.0: Navigasi Hati di Era Notifikasi",
     genre: "Romance",
-    thumbnail: "/LOVE 4.0 U.png",
-    description: "Membahas soal berbagai macam masalah percintaan di era digitalisasi zaman modern. Perkara cara publikasi status yang ribeeet banget sekarang… soft-launch atau hard-launch, duh! Ribet banget tapi bikin kepo juga sih, hehehe."
+    thumbnail: "/LOVE_4.0_U.png",
+    description: "Siap nemenin Kampus Mania bahas cinta era digital yang bikin deg-degan tiap notifikasi masuk! 💘📱🔥",
   },
   {
-    title: "TKP Gen Z Edition",
+    title: "NGIBUL : Ngobrol Asik Bebas Gaul",
     genre: "Gen Z",
-    thumbnail: "/LOGO FIX.png",
-    description: "TKP versi anak muda kekinian..."
+    thumbnail: "/Ngibul3.png",
+    description: "TNGIBUL hadir jadi ruang aman Gen Z buat ngebahas label “generasi santuy” dan realitanya! 🎙️✨",
   },
   {
-    title: "TKP Mystery Edition",
+    title: "SDGS : Santai Dulu Ga Sih...",
+    genre: "Gen Z",
+    thumbnail: "/Sdg.png",
+    description: "Siap kupas fenomena bahasa gaul Gen Z yang lagi viral bareng Kala, Ajrin, dan El! 🤩🔥",
+  },
+  {
+    title: "MASK : Misteri Asik Seputar Kriminal",
     genre: "Mystery",
-    thumbnail: "/Video Promosi.png",
-    description: "Kupas peristiwa penuh misteri..."
-  }
+    thumbnail: "/Mask.png",
+    description: "Kupas tuntas fakta stalking yang bisa berubah dari ketertarikan jadi obsesi berbahaya! ⚠️🎭",
+  },
+  {
+    title: "TKP : Tempat Kupas Peristiwa",
+    genre: "Mystery",
+    thumbnail: "/Tkp.png",
+    description: "TKP kupas tuntas kebiasaan kecil kita beneran bisa bikin kita dianggap kriminal! 🫣📌",
+  },
+  {
+    title: "WASABI : What’s Up AITIBI",
+    genre: "ITB",
+    thumbnail: "/Wasabi.png",
+    description: "WASABI?! Bongkar suka-duka dunia ITB plus tips biar hidup tetap chill di tengah chaos! 🤩💥",
+    },
+    {
+    title: "BAYANGAN : Bangunan, Budaya, dan Kenangan ITB",
+    genre: "ITB",
+    thumbnail: "/Bayangan.png",
+    description: "Bayangan siap bongkar sejarah tersembunyi Menara Loji, lengkap dari asal-usul sampai rumor yang bikin penasaran! ⏰✨",
+    },
 ];
 
-/* ===================== LIST UPCOMING SIARAN  ===================== */
+/* ===================== UPCOMING EVENTS ===================== */
 const upcomingEvents = [
-  {
-    date: "2025-12-13",
-    time: "17:00-19.00",
-    title: "LDR",
-  },
-  {
-    date: "2025-12-13",
-    time: "19:30-21.30",
-    title: "SDGs",
-  },
-  {
-    date: "2025-12-14",
-    time: "17:00-19.00",
-    title: "LOVE 4.0 U",
-  },
-  {
-    date: "2025-12-14",
-    time: "19:30-21.30",
-    title: "OWL",
-  },
-  {
-    date: "2025-12-15",
-    time: "17:00-19.00",
-    title: "WASABI",
-  },
-  {
-    date: "2025-12-15",
-    time: "19:30-21.30",
-    title: "LTM",
-  },
-  {
-    date: "2025-12-16",
-    time: "17:00-19.00",
-    title: "BAYANGAN",
-  },
- {
-    date: "2025-12-16",
-    time: "19:30-21.30",
-    title: "MASK",
-  },
-  {
-    date: "2025-12-17",
-    time: "17:00-19.00",
-    title: "NGIBUL",
-  },
-  {
-    date: "2025-12-17",
-    time: "19:30-21.30",
-    title: "TKP",
-  },
+  { date: "2025-12-13", time: "17:00-19:00", title: "LDR", genre: "Romance" },
+  { date: "2025-12-13", time: "19:30-21:30", title: "SDGs", genre: "ITB" },
+  { date: "2025-12-14", time: "17:00-19:00", title: "LOVE 4.0 U", genre: "Romance" },
+  { date: "2025-12-14", time: "19:30-21:30", title: "OWL", genre: "ITB" },
+  { date: "2025-12-15", time: "17:00-19:00", title: "WASABI", genre: "Gen Z" },
+  { date: "2025-12-15", time: "19:30-21:30", title: "LTM", genre: "ITB" },
+  { date: "2025-12-16", time: "17:00-19:00", title: "BAYANGAN", genre: "Horror" },
+  { date: "2025-12-16", time: "19:30-21:30", title: "MASK", genre: "Mystery" },
+  { date: "2025-12-17", time: "17:00-19:00", title: "NGIBUL", genre: "Horror" },
+  { date: "2025-12-17", time: "19:30-21:30", title: "TKP", genre: "Mystery" },
 ];
 
-/* ===================== GENRE SECTION (MOOD BOX) ===================== */
+/* ===================== GENRE COLORS ===================== */
+const genreColors = {
+  Horror: "bg-red-600",
+  Romance: "bg-pink-500",
+  "Gen Z": "bg-purple-500",
+  Mystery: "bg-teal-400",
+  ITB: "bg-blue-500",
+};
+
+/* ===================== GENRE SECTION ===================== */
 const GenreSelectionSection = ({ selectedGenre, onGenreSelect }) => {
   return (
-    <section className="pb-24 bg-gradient-to-b from-yellow-300 to-white pt-16">
+    <section className="pb-10 pt-16 relative overflow-hidden bg-transparent">
 
-      {/* Spark Header */}
       <div className="text-center mb-8">
         <Image src="/spark.png" width={300} height={200} alt="Spark Logo" className="mx-auto" />
       </div>
 
-      {/* Mood Text */}
+
       <div className="text-center mb-10">
-        <Image src="/mood.png" width={260} height={80} alt="Mood Label" className="mx-auto" />
+        <Image src="/mood.png" width={405} height={205} alt="Mood Label" className="mx-auto" />
       </div>
 
-      {/* Mood Box Slider (Figma Style) */}
-      <div className="max-w-5xl mx-auto px-6">
+      <div className="max-w-5xl mx-auto px-4 relative">
+
         <Swiper
           modules={[Navigation, Pagination]}
-          navigation
           pagination={{ clickable: true }}
-          slidesPerView={1.4}
+          navigation={{
+            nextEl: ".swiper-button-next-custom",
+            prevEl: ".swiper-button-prev-custom",
+          }}
+          slidesPerView={4}
           spaceBetween={20}
+          centeredSlides={false}
           breakpoints={{
-            640: { slidesPerView: 2.4 },
-            1024: { slidesPerView: 3.2 },
-            1280: { slidesPerView: 4 },
+            640: { slidesPerView: 3, spaceBetween: 20 },
+            1024: { slidesPerView: 4, spaceBetween: 20 },
+            1280: { slidesPerView: 5, spaceBetween: 20 },
           }}
           className="py-8"
         >
           {moodBoxData.map((item, idx) => (
-            <SwiperSlide key={idx}>
-              <div
-                onClick={() => onGenreSelect(item.name)}
-                className={`
-                  w-72 h-48 
-                  bg-white 
-                  rounded-2xl 
-                  border border-[#ffb4a6]
-                  shadow-[0_6px_15px_rgba(0,0,0,0.15)]
-                  flex items-center justify-center
-                  cursor-pointer
-                  transition transform hover:scale-[1.05]
-                  ${selectedGenre === item.name ? "ring-4 ring-orange-500" : ""}
-                `}
-              >
+            <SwiperSlide
+              key={idx}
+              onClick={() => onGenreSelect(item.name)}
+              className="flex justify-center cursor-pointer !overflow-hidden"
+            >
+              <div className="rounded-xl shadow-md hover:shadow-xl transition-all duration-300 w-full max-w-[320px] h-[140px] flex items-center justify-center bg-white overflow-hidden">
+
                 <Image
                   src={item.img}
-                  width={180}
-                  height={120}
+                  width={300}
+                  height={200}
                   alt={item.name}
-                  className="object-contain"
+                  className={`
+                    object-contain w-full h-full transition-all duration-300
+                    ${selectedGenre === item.name 
+                      ? "animate-bounce-smooth drop-shadow-[0_0_12px_rgba(255,150,0,0.6)]"
+                      : "opacity-90"
+                    }
+                  `}
                 />
+
               </div>
             </SwiperSlide>
           ))}
+
+          <div className="swiper-button-prev-custom absolute left-0 top-1/2 -translate-y-1/2 text-3xl cursor-pointer text-gray-700 hover:text-red-600 z-20">
+            ‹
+          </div>
+          <div className="swiper-button-next-custom absolute right-0 top-1/2 -translate-y-1/2 text-3xl cursor-pointer text-gray-700 hover:text-red-600 z-20">
+            ›
+          </div>
         </Swiper>
       </div>
     </section>
@@ -171,35 +182,37 @@ const GenreSelectionSection = ({ selectedGenre, onGenreSelect }) => {
 
 /* ===================== PROGRAM LIST ===================== */
 const FilteredProgramsList = ({ selectedGenre }) => {
-  if (!selectedGenre) {
-    return (
-      <p className="text-center text-xl text-gray-600 py-10">
-        Pilih mood/genre dulu ya 😊
-      </p>
-    );
-  }
+  if (!selectedGenre) return null;
 
-  const filtered = allProgramsData.filter(p => p.genre === selectedGenre);
+  const filtered = allProgramsData.filter((p) => p.genre === selectedGenre);
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-transparent">
       <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-4xl font-extrabold text-gray-900 mb-8">
+        <h2 className="text-4xl font-extrabold text-gray-900 mb-8 text-center animate-bounce hover:text-red-600 transition-all duration-500">
           Program {selectedGenre}
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="flex overflow-x-auto space-x-6 pb-4 snap-x snap-mandatory scrollbar-hide">
           {filtered.map((program, idx) => (
-            <div key={idx} className="bg-gray-50 p-6 rounded-xl shadow-lg border-t-4 border-red-500">
-              <div className="w-full pt-[100%] relative rounded-lg overflow-hidden mb-4 bg-gray-200">
-                <Image src={program.thumbnail} alt={program.title} fill style={{ objectFit: "contain" }} />
+            <div
+              key={idx}
+              className="w-80 flex-shrink-0 bg-white p-6 rounded-2xl shadow-lg border-t-4 border-red-500 hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:border-red-600 group snap-center"
+            >
+              <div className="w-full h-48 flex items-center justify-center mb-4">
+                <div className="relative w-[180px] h-[180px]">
+                  <Image
+                    src={program.thumbnail}
+                    alt={program.title}
+                    fill
+                    className="object-contain transition-transform duration-300 group-hover:scale-110"
+                  />
+                </div>
               </div>
-              <h3 className="text-xl font-bold">{program.title}</h3>
+              <h3 className="text-xl font-bold group-hover:text-red-600 transition-colors">{program.title}</h3>
               <p className="text-sm text-gray-600 mt-2">{program.description}</p>
-              <Link
-                href="#"
-                className="text-red-600 hover:text-red-800 mt-3 inline-block underline"
-              >
+
+              <Link href="#" className="text-red-600 hover:text-red-800 mt-3 inline-block underline font-semibold transition-all hover:translate-x-1">
                 Listen Now →
               </Link>
             </div>
@@ -210,98 +223,167 @@ const FilteredProgramsList = ({ selectedGenre }) => {
   );
 };
 
-/* ===================== UPCOMING SIARAN ===================== */
+/* ===================== UPCOMING EVENTS ===================== */
 const UpcomingEvents = () => {
-  const daysInMonth = 31;
-  const startDay = 1; 
-  const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-
-  const calendarDays = [];
-  for (let i = 0; i < startDay; i++) {
-    calendarDays.push(null); 
-  }
-  for (let day = 1; day <= daysInMonth; day++) {
-    calendarDays.push(day);
-  }
+  const [selectedDay, setSelectedDay] = useState(null);
 
   const eventsByDate = {};
-  const filteredEvents = upcomingEvents.filter(event => event.date >= '2025-12-13');
-  filteredEvents.forEach(event => {
-    const day = parseInt(event.date.split('-')[2]);
+  upcomingEvents.forEach((event) => {
+    const day = parseInt(event.date.split("-")[2]);
     if (!eventsByDate[day]) eventsByDate[day] = [];
     eventsByDate[day].push(event);
   });
 
+  const daysInMonth = 31;
+
   return (
-    <section className="py-16 bg-gray-50">
-      <div className="max-w-4xl mx-auto px-6">
-        <h2 className="text-4xl font-extrabold text-red-600 mb-8 text-center">
-          Upcoming Siaran
-        </h2>
-        <div className="bg-gradient-to-br from-orange-100 to-orange-200 p-6 rounded-xl shadow-lg border">
-          <h3 className="text-2xl font-bold text-orange-600 text-center mb-4">December 2025</h3>
+    <section className="py-16 relative bg-transparent">
+      {/* REMOVED: The full-width background div */}
+
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
+        <h2 className="text-4xl font-extrabold text-red-600 mb-8 text-center animate-bounce">Upcoming Siaran</h2>
+
+        {/* Calendar with contained background */}
+        <div className="relative p-6 rounded-2xl bg-gradient-to-r from-yellow-100 via-red-100 to-pink-100 shadow-lg">
           <div className="grid grid-cols-7 gap-2">
-            {daysOfWeek.map(day => (
-              <div key={day} className="text-center font-bold text-red-700 py-2">
-                {day}
-              </div>
-            ))}
-            {calendarDays.map((day, idx) => (
-              <div
-                key={idx}
-                className={`text-center py-4 border rounded ${
-                  day ? 'bg-gray-50' : 'bg-transparent'
-                } ${eventsByDate[day] ? 'bg-yellow-100 border-yellow-300' : ''}`}
-              >
-                {day && (
-                  <>
-                    <div className="font-semibold text-yellow-700">{day}</div>
-                    {eventsByDate[day] && eventsByDate[day].map((event, idx) => (
-                      <div key={idx} className="text-xs mt-1 text-red-600 font-semibold">
-                        {event.title}
-                      </div>
-                    ))}
-                  </>
-                )}
-              </div>
-            ))}
-          </div>
-          <div className="mt-6">
-            <h4 className="text-lg font-bold text-orange-600 mb-4">Catat Tanggal Siaran Kami di:</h4>
-            {filteredEvents.slice(0, 2).map((event, idx) => (
-              <div key={idx} className="mb-4 p-4 bg-gray-50 rounded">
-                <div className="font-bold">
-                  <span className="text-orange-600">{event.date}</span> <span className="text-black">at</span> <span className="text-orange-600">{event.time}</span>
-                </div>
-                <div className="font-semibold text-red-600">{event.title}</div>
-                <div className="text-sm text-orange-600">{event.description}</div>
-              </div>
-            ))}
+            {Array.from({ length: daysInMonth }, (_, i) => i + 1).map((day) => {
+              const hasEvent = eventsByDate[day];
+              const isSelected = selectedDay === day;
+
+              return (
+                <button
+                  key={day}
+                  onClick={() => hasEvent && setSelectedDay(isSelected ? null : day)}
+                  className={`
+                    h-16 rounded-lg flex flex-col items-center justify-center transition-all
+                    bg-white border hover:bg-gradient-to-br hover:from-yellow-100 hover:to-red-100
+                    ${hasEvent ? "border-2 border-yellow-400 hover:scale-110 shadow-lg" : ""}
+                    ${isSelected ? "ring-4 ring-red-600 scale-105" : ""}
+                  `}
+                >
+                  <div className="font-bold text-gray-900">{day}</div>
+
+                  {hasEvent && (
+                    <div className="flex mt-1 gap-1">
+                      {eventsByDate[day].map((e, i) => (
+                        <span key={i} className={`w-4 h-4 rounded-full ${genreColors[e.genre]}`}></span>
+                      ))}
+                    </div>
+                  )}
+                </button>
+              );
+            })}
           </div>
         </div>
+
+        {/* Event detail */}
+        {selectedDay && (
+          <div className="mt-8 bg-white/50 backdrop-blur-sm p-6 rounded-2xl shadow-xl border border-red-200 animate-slide-in-up">
+            <h3 className="text-2xl font-bold text-red-600 mb-4">Events on {selectedDay} December</h3>
+
+            {eventsByDate[selectedDay].map((event, idx) => (
+              <div
+                key={idx}
+                className="mb-3 p-4 rounded-xl bg-red-50 border-l-4 border-red-400 shadow-sm flex justify-between items-center hover:bg-red-100 transition-all"
+              >
+                <div>
+                  <div className="font-semibold text-gray-800">{event.title}</div>
+                  <div className="text-sm text-gray-600">{event.time}</div>
+                </div>
+                <span className={`w-6 h-6 rounded-full ${genreColors[event.genre]}`}></span>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
 };
 
-/* ===================== MAIN PAGE ===================== */
+/* ===================== CONTACT ===================== */
+const ContactSection = () => (
+  <section className="py-24 relative bg-transparent">
+    <div className="absolute inset-0 bg-gradient-to-r from-red-100 via-pink-100 to-purple-100 opacity-50"></div>
+
+    <div className="max-w-6xl mx-auto px-6 relative z-10">
+
+      {/* ==== ANIMASI TITLE ==== */}
+      <h2
+        className="
+          text-5xl font-extrabold text-red-600 mb-12 text-center
+          animate-bounce
+          animate-fade-in
+        "
+      >
+        Contact Us
+      </h2>
+
+      <div className="bg-white p-8 rounded-2xl shadow-xl border border-red-100 hover:shadow-2xl transition-all">
+        <h3 className="text-3xl font-bold mb-5 text-red-600 animate-slide-in-up">Hubungi Kami</h3>
+
+        <div className="space-y-4">
+          <div className="flex items-center space-x-4 animate-fade-in">
+            <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
+              <span className="text-red-600 text-2xl">📧</span>
+            </div>
+            <div>
+              <p className="font-semibold text-gray-800">Email</p>
+              <p className="text-gray-600">yourradiosfavradio@gmail.com</p>
+            </div>
+          </div>
+
+          <div className="flex items-center space-x-4 animate-fade-in">
+            <div className="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center">
+              <span className="text-pink-600 text-2xl">📸</span>
+            </div>
+            <div>
+              <p className="font-semibold text-gray-800">Instagram</p>
+              <p className="text-gray-600">@spark31radio</p>
+            </div>
+          </div>
+
+          <div className="flex items-center space-x-4 animate-fade-in">
+            <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+              <span className="text-blue-600 text-2xl">📍</span>
+            </div>
+            <div>
+              <p className="font-semibold text-gray-800">Location</p>
+              <p className="text-gray-600">Institut Teknologi Bandung</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
+
+/* ===================== MAIN ===================== */
 export default function Home() {
   const [selectedGenre, setSelectedGenre] = useState(null);
 
   return (
-    <div className="min-h-screen bg-white">
-      <Navbar />
+    <div className="min-h-screen relative bg-white"> 
+      <div 
+        className="fixed inset-0 z-0 opacity-50" 
+        style={{ 
+          backgroundImage: 'url("/background.png")', 
+          backgroundRepeat: 'repeat-y',
+          backgroundAttachment: 'fixed', 
+          backgroundSize: '100% auto', 
+          backgroundPosition: 'top center',
+        }}
+      >
+      </div>
 
-      <GenreSelectionSection
-        selectedGenre={selectedGenre}
-        onGenreSelect={setSelectedGenre}
-      />
-
-      <FilteredProgramsList selectedGenre={selectedGenre} />
-
-      <UpcomingEvents />
-
-      <FooterSection />
+      <div className="relative z-10">
+        <Navbar sticky={true} />
+        <GenreSelectionSection selectedGenre={selectedGenre} onGenreSelect={setSelectedGenre} />
+        <FilteredProgramsList selectedGenre={selectedGenre} />
+        <UpcomingEvents />
+        <ContactSection />
+        <FooterSection />
+      </div>
     </div>
   );
 }
