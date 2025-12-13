@@ -112,51 +112,67 @@ const genreColors = {
 /* ===================== GENRE SECTION ===================== */
 const GenreSelectionSection = ({ selectedGenre, onGenreSelect }) => {
   return (
-    <section className="pb-10 pt-16 relative overflow-hidden bg-transparent">
+    <section className="pb-20 pt-16 relative overflow-hidden bg-transparent">
 
       <div className="text-center mb-8">
         <Image src="/spark.png" width={300} height={200} alt="Spark Logo" className="mx-auto" />
       </div>
 
-
       <div className="text-center mb-10">
         <Image src="/mood.png" width={405} height={205} alt="Mood Label" className="mx-auto" />
       </div>
 
-      <div className="max-w-5xl mx-auto px-4 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-16 lg:px-20 relative">
+
+        <div className="swiper-button-prev-custom absolute -left-2 sm:-left-6 md:-left-10 lg:-left-16 top-[45%] -translate-y-1/2 w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full bg-gradient-to-br from-orange-500 via-red-500 to-yellow-500 flex items-center justify-center text-white text-3xl sm:text-4xl lg:text-5xl font-extrabold cursor-pointer hover:from-orange-600 hover:via-red-600 hover:to-yellow-600 hover:scale-110 active:scale-95 transition-all duration-200 shadow-2xl hover:shadow-[0_0_30px_rgba(249,115,22,0.8)] z-40 border-3 border-white ring-4 ring-orange-300">
+          ‹
+        </div>
+
+        <div className="swiper-button-next-custom absolute -right-2 sm:-right-6 md:-right-10 lg:-right-16 top-[45%] -translate-y-1/2 w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full bg-gradient-to-br from-orange-500 via-red-500 to-yellow-500 flex items-center justify-center text-white text-3xl sm:text-4xl lg:text-5xl font-extrabold cursor-pointer hover:from-orange-600 hover:via-red-600 hover:to-yellow-600 hover:scale-110 active:scale-95 transition-all duration-200 shadow-2xl hover:shadow-[0_0_30px_rgba(249,115,22,0.8)] z-40 border-3 border-white ring-4 ring-orange-300">
+          ›
+        </div>
 
         <Swiper
           modules={[Navigation, Pagination]}
-          pagination={{ clickable: true }}
+          pagination={{ 
+            clickable: true,
+            bulletClass: 'swiper-pagination-bullet custom-bullet',
+            bulletActiveClass: 'swiper-pagination-bullet-active custom-bullet-active',
+          }}
           navigation={{
             nextEl: ".swiper-button-next-custom",
             prevEl: ".swiper-button-prev-custom",
           }}
-          slidesPerView={4}
-          spaceBetween={20}
+          slidesPerView={1.2}
+          spaceBetween={15}
           centeredSlides={false}
+          loop={false}
+          allowTouchMove={true}
           breakpoints={{
-            640: { slidesPerView: 3, spaceBetween: 20 },
-            1024: { slidesPerView: 4, spaceBetween: 20 },
-            1280: { slidesPerView: 5, spaceBetween: 20 },
+            480: { slidesPerView: 1.5, spaceBetween: 20 },
+            640: { slidesPerView: 2, spaceBetween: 20 },
+            768: { slidesPerView: 2.3, spaceBetween: 25 },
+            1024: { slidesPerView: 2.8, spaceBetween: 25 },
+            1280: { slidesPerView: 3.3, spaceBetween: 30 },
+            1536: { slidesPerView: 3.8, spaceBetween: 30 },
           }}
-          className="py-8"
+          className="py-8 px-2 sm:px-4"
         >
           {moodBoxData.map((item, idx) => (
             <SwiperSlide
               key={idx}
               onClick={() => onGenreSelect(item.name)}
-              className="flex justify-center cursor-pointer !overflow-hidden"
+              className="flex justify-center cursor-pointer"
             >
-              <div className="rounded-xl shadow-md hover:shadow-xl transition-all duration-300 w-full max-w-[320px] h-[140px] flex items-center justify-center bg-white overflow-hidden">
+              <div className="rounded-xl shadow-md hover:shadow-xl transition-all duration-300 w-full h-[140px] sm:h-[160px] md:h-[180px] lg:h-[200px] flex items-center justify-center bg-white overflow-hidden">
 
                 <Image
                   src={item.img}
-                  width={300}
-                  height={200}
+                  width={400}
+                  height={250}
                   alt={item.name}
                   className={`
-                    object-contain w-full h-full transition-all duration-300
+                    object-contain w-full h-full transition-all duration-300 p-4
                     ${selectedGenre === item.name 
                       ? "animate-bounce-smooth drop-shadow-[0_0_12px_rgba(255,150,0,0.6)]"
                       : "opacity-90"
@@ -167,14 +183,99 @@ const GenreSelectionSection = ({ selectedGenre, onGenreSelect }) => {
               </div>
             </SwiperSlide>
           ))}
-
-          <div className="swiper-button-prev-custom absolute left-0 top-1/2 -translate-y-1/2 text-3xl cursor-pointer text-gray-700 hover:text-red-600 z-20">
-            ‹
-          </div>
-          <div className="swiper-button-next-custom absolute right-0 top-1/2 -translate-y-1/2 text-3xl cursor-pointer text-gray-700 hover:text-red-600 z-20">
-            ›
-          </div>
         </Swiper>
+
+        <style jsx>{`
+          :global(.custom-bullet) {
+            width: 10px;
+            height: 10px;
+            background: #d1d5db;
+            opacity: 1;
+            margin: 0 4px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            cursor: pointer;
+          }
+          
+          @media (min-width: 640px) {
+            :global(.custom-bullet) {
+              width: 12px;
+              height: 12px;
+              margin: 0 6px;
+            }
+          }
+          
+          @media (min-width: 1024px) {
+            :global(.custom-bullet) {
+              width: 14px;
+              height: 14px;
+              margin: 0 8px;
+            }
+          }
+          
+          :global(.custom-bullet:hover) {
+            background: #fb923c;
+            transform: scale(1.3);
+          }
+          
+          :global(.custom-bullet-active) {
+            background: linear-gradient(135deg, #f97316, #ef4444, #eab308);
+            width: 24px;
+            border-radius: 6px;
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.5);
+          }
+          
+          @media (min-width: 640px) {
+            :global(.custom-bullet-active) {
+              width: 32px;
+            }
+          }
+          
+          @media (min-width: 1024px) {
+            :global(.custom-bullet-active) {
+              width: 40px;
+            }
+          }
+          
+          /* Position pagination bullets BELOW the swiper */
+          :global(.swiper-pagination) {
+            position: relative !important;
+            bottom: auto !important;
+            margin-top: 20px !important;
+          }
+
+          /* FORCE arrows to ALWAYS be visible and prominent */
+          :global(.swiper-button-prev-custom),
+          :global(.swiper-button-next-custom) {
+            display: flex !important;
+            pointer-events: auto !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+          }
+          
+          /* Keep arrows visible even when disabled */
+          :global(.swiper-button-prev-custom.swiper-button-disabled),
+          :global(.swiper-button-next-custom.swiper-button-disabled) {
+            opacity: 0.5 !important;
+            pointer-events: auto !important;
+            display: flex !important;
+          }
+          
+          /* Ensure swiper container doesn't hide overflow */
+          :global(.swiper) {
+            overflow: visible !important;
+            padding: 0 !important;
+          }
+          
+          :global(.swiper-wrapper) {
+            cursor: grab !important;
+          }
+          
+          :global(.swiper-wrapper:active) {
+            cursor: grabbing !important;
+          }
+        `}</style>
       </div>
     </section>
   );
@@ -238,12 +339,10 @@ const UpcomingEvents = () => {
 
   return (
     <section className="py-16 relative bg-transparent">
-      {/* REMOVED: The full-width background div */}
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <h2 className="text-4xl font-extrabold text-red-600 mb-8 text-center animate-bounce">Upcoming Siaran</h2>
 
-        {/* Calendar with contained background */}
         <div className="relative p-6 rounded-2xl bg-gradient-to-r from-yellow-100 via-red-100 to-pink-100 shadow-lg">
           <div className="grid grid-cols-7 gap-2">
             {Array.from({ length: daysInMonth }, (_, i) => i + 1).map((day) => {
@@ -303,11 +402,9 @@ const UpcomingEvents = () => {
 /* ===================== CONTACT ===================== */
 const ContactSection = () => (
   <section className="py-24 relative bg-transparent">
-    <div className="absolute inset-0 bg-gradient-to-r from-red-100 via-pink-100 to-purple-100 opacity-50"></div>
 
     <div className="max-w-6xl mx-auto px-6 relative z-10">
 
-      {/* ==== ANIMASI TITLE ==== */}
       <h2
         className="
           text-5xl font-extrabold text-red-600 mb-12 text-center
@@ -365,17 +462,16 @@ export default function Home() {
   return (
     <div className="min-h-screen relative bg-white"> 
       <div 
-        className="fixed inset-0 z-0 opacity-50" 
-        style={{ 
-          backgroundImage: 'url("/background.png")', 
-          backgroundRepeat: 'repeat-y',
-          backgroundAttachment: 'fixed', 
-          backgroundSize: '100% auto', 
-          backgroundPosition: 'top center',
-        }}
-      >
-      </div>
-
+    className="fixed inset-0 z-0 opacity-50" 
+    style={{ 
+    backgroundImage: 'url("/background.png")', 
+    backgroundRepeat: 'repeat',
+    backgroundAttachment: 'fixed', 
+    backgroundSize: 'cover', 
+    backgroundPosition: 'center center', 
+  }}
+>
+</div>
       <div className="relative z-10">
         <Navbar sticky={true} />
         <GenreSelectionSection selectedGenre={selectedGenre} onGenreSelect={setSelectedGenre} />
