@@ -71,10 +71,10 @@ export const metadata = {
   },
   manifest: "/manifest.json",
   openGraph: {
-    siteName: "8EH Radio ITB",
+    siteName: "Spark31",
     url: "https://8ehradioitb.com",
     type: "website",
-    title: "8EH Radio ITB",
+    title: "Spark31",
     description: "Tempatnya semua informasi dan hiburan untuk Kampus Mania. Dengarkan berita terbaru, musik pilihan, dan podcast yang seru hanya di 8EH Radio ITB, Your Edutainment and Music Station!",
     locale: "id_ID",
     images: [
